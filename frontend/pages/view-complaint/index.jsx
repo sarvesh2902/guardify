@@ -45,7 +45,7 @@ export async function getServerSideProps({ req }) {
 
   let complaints = [];
   await axios
-    .post("http://localhost:3000/api/get-user-complaints", {
+    .post(`${process.env.NEXT_PUBLIC_DOMAIN_URL}api/get-user-complaints`, {
       email: session.user.email,
     })
     .then((response) => {

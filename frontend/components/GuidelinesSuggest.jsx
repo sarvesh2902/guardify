@@ -35,7 +35,7 @@ const GuidelinesSuggest = ({ name }) => {
     let data = null;
 
     await axios
-      .post("http://127.0.0.1:5000/guideline-suggestion", {
+      .post(`${process.env.NEXT_PUBLIC_FLASK_DOMAIN_URL}guideline-suggestion`, {
         // subject: formData.subject,
         // name: formData.name,
         // address: formData.address,
@@ -51,9 +51,9 @@ const GuidelinesSuggest = ({ name }) => {
         setIsLoading(false);
         const formatted = response.data.split("\n");
         function removeItem(array, item) {
-            return array.filter((i) => i !== item);
-          }
-          const withOutEmpty = removeItem(formatted, "");
+          return array.filter((i) => i !== item);
+        }
+        const withOutEmpty = removeItem(formatted, "");
         console.log(withOutEmpty);
         // console.log(data);
 
@@ -64,13 +64,13 @@ const GuidelinesSuggest = ({ name }) => {
         console.log(error);
       });
     setFormData({
-    //   subject: "",
-    //   name: "",
-    //   address: "",
-    //   city: "",
-    //   code: "",
-    //   phone: "",
-    //   email: "",
+      //   subject: "",
+      //   name: "",
+      //   address: "",
+      //   city: "",
+      //   code: "",
+      //   phone: "",
+      //   email: "",
       complaint: "",
     });
   };
@@ -78,8 +78,6 @@ const GuidelinesSuggest = ({ name }) => {
     <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
       <div className="flex-auto px-4 lg:px-10 py-10">
         <form onSubmit={handleSubmit}>
-        
-           
           <div className="mb-3">
             <label
               className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -143,18 +141,15 @@ const GuidelinesSuggest = ({ name }) => {
             </button>
           </div>
         </form>
-       
       </div>
       <div className="m-10 text-black">
-                <p class="font-bold text-xl">Steps to follow: </p>
-                <p class="text-lg">
-                    {output.map((item) => {
-                        return(
-                            <p>{item}</p>
-                        )
-                    })}
-                </p>
-              </div> 
+        <p class="font-bold text-xl">Steps to follow: </p>
+        <p class="text-lg">
+          {output.map((item) => {
+            return <p>{item}</p>;
+          })}
+        </p>
+      </div>
     </div>
   );
 };

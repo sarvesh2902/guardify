@@ -8,7 +8,7 @@ export default function Register() {
   const onSubmit = async (values) => {
     console.log(values);
     await axios
-      .post("http://localhost:3000/api/auth/signup", {
+      .post(`${process.env.NEXT_PUBLIC_DOMAIN_URL}api/auth/signup`, {
         email: values.email,
         password: values.password,
         username: values.username,

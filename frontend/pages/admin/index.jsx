@@ -45,7 +45,7 @@ export async function getServerSideProps({ req }) {
 
   let complaints = [];
   await axios
-    .get("http://localhost:3000/api/get-all-complaints")
+    .get(`${process.env.NEXT_PUBLIC_DOMAIN_URL}api/get-all-complaints`)
     .then((response) => {
       complaints = response.data;
       console.log(complaints);

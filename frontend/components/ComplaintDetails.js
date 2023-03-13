@@ -9,7 +9,7 @@ export default function ComplaintDetails({ color, complaintData }) {
   const router = useRouter();
   const saveStatus = async (status) => {
     await axios
-      .post("http://localhost:3000/api/save-status", {
+      .post(`${process.env.NEXT_PUBLIC_DOMAIN_URL}api/save-status`, {
         status,
         complaintId: complaintData._id,
       })

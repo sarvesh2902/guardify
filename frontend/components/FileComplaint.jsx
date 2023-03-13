@@ -35,7 +35,7 @@ const FileComplaint = ({ name }) => {
     let data = null;
 
     await axios
-      .post("http://localhost:3000/api/fileComplaint", {
+      .post(`${process.env.NEXT_PUBLIC_DOMAIN_URL}api/fileComplaint`, {
         subject: formData.subject,
         name: formData.name,
         address: formData.address,

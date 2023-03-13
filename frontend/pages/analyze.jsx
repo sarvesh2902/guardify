@@ -29,7 +29,7 @@ export default function Analyze() {
     console.log(formData);
 
     await axios
-      .post("http://127.0.0.1:5000/get-followings", {
+      .post(`${process.env.NEXT_PUBLIC_FLASK_DOMAIN_URL}get-followings`, {
         username: formData.username,
       })
       .then((res) => {

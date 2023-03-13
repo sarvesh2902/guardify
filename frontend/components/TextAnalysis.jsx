@@ -28,7 +28,7 @@ const TextAnalysis = ({ name }) => {
     let data = null;
 
     await axios
-      .post("http://127.0.0.1:5000/analysis-text", {
+      .post(`${process.env.NEXT_PUBLIC_FLASK_DOMAIN_URL}analysis-text`, {
         text: formData.text,
       })
       .then(function (response) {

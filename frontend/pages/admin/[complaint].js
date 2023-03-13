@@ -19,7 +19,7 @@ export default function ViewComplaint() {
   useEffect(() => {
     setName(localStorage.getItem("name"));
     axios
-      .post("http://localhost:3000/api/get-complaints-by-id", {
+      .post(`${process.env.NEXT_PUBLIC_DOMAIN_URL}api/get-complaints-by-id`, {
         id: path,
       })
       .then((res) => {

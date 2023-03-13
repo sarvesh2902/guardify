@@ -14,7 +14,7 @@ translator = Translator()
 
 # token = "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"
 
-
+domain_url = os.getenv("DOMAIN_URL")
 auth = OAuthHandler(os.getenv("CONSUMER_KEY"), os.getenv("CONSUMER_SECRET"))
 auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
 api = API(auth, wait_on_rate_limit=True)
@@ -77,7 +77,7 @@ def analysis():
     print("Translated Text:", translated_text.text)
 
     # Define the API endpoint
-    endpoint = "http://localhost:3000/api/analyseTweet"
+    endpoint = f"{domain_url}api/analyseTweet"
 
     # Define any required headers or parameters
     data = {"inputs": translated_text}

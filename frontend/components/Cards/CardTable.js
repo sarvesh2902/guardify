@@ -15,7 +15,7 @@ export default function CardTable({
   const analyzeUser = async (user) => {
     let allTweets = [];
     await axios
-      .post("http://127.0.0.1:5000/get-tweets", {
+      .post(`${process.env.NEXT_PUBLIC_FLASK_DOMAIN_URL}get-tweets`, {
         username: user,
       })
       .then(function (response) {
@@ -27,7 +27,7 @@ export default function CardTable({
       });
     let result = [];
     await axios
-      .post("http://localhost:3000/api/analyseTweet", {
+      .post(`${process.env.NEXT_PUBLIC_DOMAIN_URL}api/analyseTweet`, {
         inputs: allTweets,
       })
       .then(function (response) {
@@ -132,9 +132,12 @@ export default function CardTable({
             onClick={async () => {
               localStorage.setItem("name", user);
               router.push("/file-complaint");
-              await axios.post("http://localhost:3000/api/report-user", {
-                username: user,
-              });
+              await axios.post(
+                `${process.env.NEXT_PUBLIC_DOMAIN_URL}api/report-user`,
+                {
+                  username: user,
+                }
+              );
             }}
             className="w-20 h-12 flex justify-center items-center text-md text-white bg-blueGray-800 hover:bg-blueGray-800 transition-all font-medium rounded-lg px-5 py-2.5 text-center"
           >
