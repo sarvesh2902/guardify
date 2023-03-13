@@ -9,13 +9,14 @@ export default function Navbar({ title, image }) {
       <nav className="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
         <div className="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
           {/* Brand */}
-          <a
-            className="text-white text-lg uppercase hidden lg:inline-block font-bold"
-            href="/"
-            onClick={(e) => e.preventDefault()}
-          >
-            {title}
-          </a>
+          <Link href="/">
+            <a
+              className="text-white text-lg uppercase hidden lg:inline-block font-bold"
+              onClick={(e) => e.preventDefault()}
+            >
+              {title}
+            </a>
+          </Link>
 
           {/* User */}
           <ul className="flex-col md:flex-row list-none items-center hidden md:flex">

@@ -146,7 +146,7 @@ const GuidelinesSuggest = ({ name }) => {
         <p class="font-bold text-xl">Steps to follow: </p>
         <p class="text-lg">
           {output.map((item) => {
-            return <p>{item}</p>;
+            return <p key={item}>{item}</p>;
           })}
         </p>
       </div>
