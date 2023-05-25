@@ -34,7 +34,7 @@ export default function Analyze() {
       })
       .then((res) => {
         console.log(res.data);
-        setUsernames(res.data);
+        setUsernames(res.data.usernames);
       })
       .catch((err) => {
         console.log(err);

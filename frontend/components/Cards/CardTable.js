@@ -19,7 +19,7 @@ export default function CardTable({
         username: user,
       })
       .then(function (response) {
-        allTweets = response.data;
+        allTweets = response.data.all_tweets;
         // console.log(allTweets);
       })
       .catch(function (error) {

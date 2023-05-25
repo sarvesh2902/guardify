@@ -15,8 +15,13 @@ translator = Translator()
 # token = "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"
 
 domain_url = os.getenv("DOMAIN_URL")
-auth = OAuthHandler(os.getenv("CONSUMER_KEY"), os.getenv("CONSUMER_SECRET"))
-auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
+token = "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"
+consumer_key = "5WUXvVxQVonZBZjiyPnncNQ4E"
+consumer_secret = "VgrDxxfXrbQpWvRly6HGg4Ccx7nEe5WPCsuWmlRW189qC8YPEm"
+access_token = "1390587786491617282-uKoxwXALNTI4cdsn66YekyUuN3xYdS"
+access_secret = "Ji3c7JKJDWGBOipwq5tVBxNieUcWDBVnm4vNNVKJgDJQU"
+auth = OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_secret)
 api = API(auth, wait_on_rate_limit=True)
 
 
@@ -44,7 +49,7 @@ def followings():
         usernames.append(user._json["screen_name"])
 
     print(usernames)
-    return usernames
+    return {"usernames": usernames}
 
 
 @app.route("/get-tweets", methods=["POST"])
@@ -58,7 +63,7 @@ def tweets():
     for tweet in tweets:
         all_tweets.append(tweet._json["full_text"])
 
-    return all_tweets
+    return {"all_tweets": all_tweets}
 
 
 @app.route("/analysis-text", methods=["POST"])
@@ -116,4 +121,4 @@ def suggestion():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
